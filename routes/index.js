@@ -24,8 +24,7 @@ router.get('/new/:url(*)', function (req, res, next) {
       var collection = db.collection('links');
       var params = req.params.url;
 
-      //var local = req.get('host') + "/";
-      var local = "http://linkduck.azurewebsites.net" + "/";
+      var local = req.get('host') + "/";
 
       var newLink = function (db, callback) {
         collection.findOne({ "url": params }, { short: 1, _id: 0 }, function (err, doc) {
